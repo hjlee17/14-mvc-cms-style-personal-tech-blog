@@ -3,16 +3,6 @@ const sequelize = require('../config/connection');
 const { User, Post, Comment } = require('../models');
 const { withAuth } = require('../utils/auth');
 
-//-------------------------------------------
-// test routes
-// router.get('/test', async (req, res) => {
-
-router.get('/test', async (req, res) => {
-    res.render('delete-post');
-})
-
-//-------------------------------------------
-  
 
 // GET all posts (by all users) to render to homepage
 router.get('/', async (req, res) => {
@@ -113,6 +103,9 @@ router.get('/posts/:id', withAuth, async (req, res) => {
                     {
                         model: User,
                         attributes: ['first_name'],
+                    },
+                    {
+                        model: Comment
                     },
                 ],
             }),

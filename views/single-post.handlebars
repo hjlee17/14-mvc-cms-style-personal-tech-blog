@@ -4,7 +4,6 @@ second post passes the "post" data from the get request through the partial --}}
 {{> post post}}
 
 
-{{!-- {{#each post.comments as |comment|}} --}}
 {{#each comments as |comment|}}
     {{> comment}}
     {{else}}

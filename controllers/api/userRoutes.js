@@ -3,35 +3,10 @@ const { User } = require('../../models');
 const { Post } = require('../../models');
 const { withAuth } = require('../../utils/auth');
 
-// The `/api/users` endpoint
+// the `/api/users` endpoint
+// three post routes for creating a user, logging in, and logging out
 
 
-// ------------------------------------------------------------------
-// FOR TESTING IN INSOMNIA
-
-
-// GET all users 
-router.get('/', async (req, res) => {
-  const userData = await User.findAll({
-    include: [{ model: Post }],
-  });
-  res.status(200).json(userData);
-});
-
-// DELETE a user 
-router.delete('/:id', async (req, res) => {
-  const deletedUser = await User.destroy({
-    where: {
-      id: req.params.id,
-    },
-  });
-  res.json(deletedUser);
-});
-// ------------------------------------------------------------------
-
-
-
-// The `/api/users` endpoint
 // create a new user
 router.post('/', async (req, res) => {
   try {
@@ -104,12 +79,6 @@ router.post('/logout', (req, res) => {
       res.status(404).end();
   }
 });
-
-
-
-
-
-
 
 
 

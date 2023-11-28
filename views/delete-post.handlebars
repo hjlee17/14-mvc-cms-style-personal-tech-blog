@@ -1,7 +1,5 @@
 <div class="delete-confirm-wrapper">
     <h2 id="delete-post-header">Are you sure you want to delete your post?</h2>
-    
-    {{!-- style date later --}}
     <p id="view-post-date">Posted on: {{format_date post.date_created}}</p>
     <input type="title" class="field" id="view-post-title" readonly placeholder="{{post.title}}" />
     <textarea class="field" id="delete-post-content" readonly placeholder="{{post.content}}"></textarea>

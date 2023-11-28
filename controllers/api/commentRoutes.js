@@ -6,36 +6,7 @@ const { withAuth } = require('../../utils/auth');
 // the /api/comments endpoint
 
 
-
-// ------------------------------------------------------------------
-// FOR TESTING IN INSOMNIA
-
-
-// GET all comments 
-router.get('/', async (req, res) => {
-  const commentData = await Comment.findAll({
-    include: [{ model: User }],
-  });
-  res.status(200).json(commentData);
-});
-
-
-// DELETE a comment 
-router.delete('/:id', async (req, res) => {
-  const deletedComment = await Comment.destroy({
-    where: {
-      id: req.params.id,
-    },
-  });
-  res.json(deletedComment);
-});
-
-
-// ------------------------------------------------------------------
-
-
-
-// CREATE a comment 
+// create a comment 
 router.post('/create', withAuth, async (req, res) => {
   /* req.body should look like this...
     {
@@ -67,7 +38,7 @@ router.post('/create', withAuth, async (req, res) => {
 
 
 
-// DELETE a comment
+// delete a comment
 router.delete('/:id', withAuth, async (req, res) => {
   /* req.body should look like this...
     {

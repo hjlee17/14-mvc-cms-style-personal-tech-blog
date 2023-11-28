@@ -68,7 +68,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         const posts = postData.map((post) => {
             const onePost = post.get({ plain: true });
             // "req.session.user_id === post.user_id"
-            // i don't need to do this comparison for the homepage because... 
+            // don't need to do this comparison for the homepage because
             // i've only retrieved posts belonging to the user 
             onePost.user_logged_in = true;
             return onePost;
@@ -194,10 +194,6 @@ router.get('/posts/:id/update', withAuth, async (req, res) => {
    
         const post = postData.get({ plain: true });
 
-        // compare the req.session.user_id and the user_id (part of the Post model)
-        // and then if they DONT match, stop the code and redirect
-        // res.render('test');
-
         // check logged in user and owner of post
         if (req.session.user_id !== post.user_id) {
             res.redirect('/test'); 
@@ -250,10 +246,6 @@ router.get('/posts/:id/delete', withAuth, async (req, res) => {
         }
    
         const post = postData.get({ plain: true });
-
-        // compare the req.session.user_id and the user_id (part of the Post model)
-        // and then if they DONT match, stop the code and redirect
-        // res.render('test');
 
         // check logged in user and owner of post
         if (req.session.user_id !== post.user_id) {

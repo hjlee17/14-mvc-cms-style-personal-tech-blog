@@ -4,40 +4,10 @@ const { Post, User, Comment } = require('../../models');
 const { withAuth } = require('../../utils/auth');
 
 // the /api/posts endpoint
+// routes for creating (post), updating (put), and deleting (delete) a post
 
 
-
-// ------------------------------------------------------------------
-// FOR TESTING IN INSOMNIA
-
-
-// GET all posts 
-router.get('/', async (req, res) => {
-  const postData = await Post.findAll({
-    include: [
-      { model: User },
-      { model: Comment }
-    ],
-  });
-  res.status(200).json(postData);
-});
-
-
-// DELETE a post 
-router.delete('/:id', async (req, res) => {
-  const deletedPost = await Post.destroy({
-    where: {
-      id: req.params.id,
-    },
-  });
-  res.json(deletedPost);
-});
-
-
-// ------------------------------------------------------------------
-
-
-// CREATE a post 
+// create a post 
 router.post('/create', withAuth, async (req, res) => {
 
     /* req.body should look like this...
@@ -68,8 +38,7 @@ router.post('/create', withAuth, async (req, res) => {
 
 
 
-
-// UPDATE post
+// update a post
 router.put('/update/:id', withAuth, async (req, res) => {
   console.log("post update api test'")
   console.log(req.params.id)
@@ -109,7 +78,7 @@ try {
 
 
 
-// DELETE post
+// delete a post
 router.delete('/delete/:id', withAuth, async (req, res) => {
   console.log("post delete api test'")
   console.log(req.params.id)
@@ -142,9 +111,6 @@ router.delete('/delete/:id', withAuth, async (req, res) => {
     res.status(500).json(error);
   }
 });
-
-
-
 
 
 module.exports = router;

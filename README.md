@@ -14,7 +14,7 @@ This application is a CMS-style blog site similar to a Wordpress site, where dev
 
 
 ## Deployed Application and GitHub Repository
-[Tech Blog](https://dry-cliffs-36646-632c1ada6b75.herokuapp.com/)  
+[Tech Blog](https://warm-sierra-75872-ca112be350a6.herokuapp.com/)  
 [GitHub Repository](https://github.com/hjlee17/14-mvc-cms-style-personal-tech-blog.git)
 
 
